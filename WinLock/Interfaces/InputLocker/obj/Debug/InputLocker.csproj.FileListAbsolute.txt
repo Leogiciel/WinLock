@@ -1,0 +1,12 @@
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\bin\Debug\InputLocker.exe.config
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\bin\Debug\InputLocker.exe
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\bin\Debug\InputLocker.pdb
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\bin\Debug\LockerEngine.dll
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\bin\Debug\Hook.dll
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\bin\Debug\LockerEngine.pdb
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\bin\Debug\Hook.pdb
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\obj\Debug\InputLocker.csprojResolveAssemblyReference.cache
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\obj\Debug\WinLock.Winforms.FrmMain.resources
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\obj\Debug\InputLocker.csproj.GenerateResource.Cache
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\obj\Debug\InputLocker.exe
+D:\Mes docs\GitHub\WinLock\WinLock\Interfaces\InputLocker\obj\Debug\InputLocker.pdb
