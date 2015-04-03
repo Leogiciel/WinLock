@@ -1,0 +1,74 @@
+﻿<controls:MetroWindow
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" 
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:wpf="clr-namespace:WinLock.WPF"
+        xmlns:engine="clr-namespace:WinLock.Engine;assembly=LockerEngine"
+        x:Class="WinLock.WPF.MainWindow"
+            Title="BabyLock" Width="170" WindowStartupLocation="CenterScreen" Icon="Resources/1368108324_Logout.ico" IsManipulationEnabled="True" Background="White" Foreground="#FF33B5E5" MinWidth="287" MinHeight="530" Height="548.333" ShowInTaskbar="False" UseLayoutRounding="True" AllowDrop="True" HorizontalContentAlignment="Stretch" WindowStyle="None">
+    <controls:MetroWindow.Resources>
+        <wpf:IntMatchToBoolConverter x:Key="IntMatchToBoolConverter"/>
+    </controls:MetroWindow.Resources>
+    <Grid x:Name="MainGrid" Margin="0,0,0,0" MinHeight="500">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF4D4B48" Offset="0.989"/>
+                <GradientStop Color="#FF4D4B48"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <GroupBox x:Name="GbxCombo" Header="Combinaison de touches :" Margin="10,10,10,0" VerticalAlignment="Top" Height="81" BorderBrush="#FF33B5E5" Foreground="#FF33B5E5" HorizontalContentAlignment="Stretch">
+            <Grid x:Name="LettersGrid" HorizontalAlignment="Center">
+                <ComboBox x:Name="CbxFirstLetter" HorizontalAlignment="Left" Margin="48,10,0,0" VerticalAlignment="Top" Width="34" SelectedIndex="{Binding FirstLetter}" HorizontalContentAlignment="Center"/>
+                <ComboBox x:Name="CbxSecondLetter" HorizontalAlignment="Left" Margin="110,10,0,0" Width="34" Height="22" VerticalAlignment="Top" SelectedIndex="{Binding SecondLetter}" HorizontalContentAlignment="Center"/>
+                <Label Content="+" HorizontalAlignment="Left" Margin="87,6,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.111,-0.423" Foreground="White" HorizontalContentAlignment="Center"/>
+                <Label Content="Ctrl +" HorizontalAlignment="Left" Margin="5,6,0,0" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center"/>
+                <Label Content="      " HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="White" HorizontalContentAlignment="Center" Margin="149,6,0,0"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="GbxLockedEvents" Header="Réglages :" Margin="10,96,10,0" VerticalAlignment="Top" Height="136" Foreground="#FF33B5E5" BorderBrush="#FF33B5E5" HorizontalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Center">
+                <CheckBox x:Name="ChkKeyboard" Content="Verrouiller le clavier" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" IsChecked="{Binding LockKeyboard}" Foreground="White" Width="134"/>
+                <CheckBox x:Name="ChkMouseClicks" Content="Verrouiller les clics de souris" HorizontalAlignment="Left" Margin="0,31,0,0" VerticalAlignment="Top" IsChecked="{Binding LockMouseClick}" Foreground="White" Width="180"/>
+                <CheckBox x:Name="ChkMouseMove" Content="Verrouiller les mouvements de la souris" HorizontalAlignment="Left" Margin="0,52,0,0" VerticalAlignment="Top" Foreground="White" IsChecked="{Binding LockMouseMove}" Width="242"/>
+                <CheckBox x:Name="ChkShutScreen" Content="Mettre l'écran en veille" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Foreground="White" IsChecked="{Binding LockScreen}" Width="150"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="GbxAutoLock" Header="Verrouillage automatique :" Margin="10,237,10,0" VerticalAlignment="Top" Height="105" Foreground="#FF33B5E5" BorderBrush="#FF33B5E5" HorizontalContentAlignment="Stretch">
+            <Grid>
+                <Grid HorizontalAlignment="Center">
+                    <Label Content="Au bout de :" HorizontalAlignment="Left" Margin="31,26,0,0" VerticalAlignment="Top" Foreground="White"/>
+                    <TextBox Text="{Binding Value, ElementName=TimerSlider, Mode=TwoWay}" HorizontalAlignment="Left" Margin="106,26,0,0" VerticalAlignment="Top" Foreground="#FF33B5E5" Width="39"/>
+                    <Label Content="secondes" HorizontalAlignment="Left" Margin="150,26,0,0" VerticalAlignment="Top" Foreground="White"/>
+                </Grid>
+                <Grid>
+                    <CheckBox x:Name="ChkAutoLock" Content="Activer :" HorizontalAlignment="Left" Margin="10,3,0,0" VerticalAlignment="Top" Checked="ChkAutoLockChecked" Unchecked="ChkAutoLockChecked" Foreground="White" IsChecked="{Binding AutoLock}"/>
+                    <Slider x:Name="TimerSlider" RenderTransformOrigin="0.5,0.405" Maximum="300" Minimum="1" LargeChange="10" SmallChange="1" AutoToolTipPrecision="1"  IsSnapToTickEnabled="True" Value="{Binding LockTimer}" IsEnabled="{Binding AutoLock}" Height="18" VerticalAlignment="Bottom">
+                        <Slider.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleY="-0.109"/>
+                                <RotateTransform/>
+                                <TranslateTransform Y="-0.297"/>
+                            </TransformGroup>
+                        </Slider.RenderTransform>
+                    </Slider>
+                </Grid>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="GbxHide" Header="Masquer cette fenêtre :" Margin="10,347,10,0" VerticalAlignment="Top" Height="113" Foreground="#FF33B5E5" BorderBrush="#FF33B5E5" HorizontalContentAlignment="Stretch">
+            <Grid HorizontalAlignment="Center">
+                <RadioButton x:Name="RbtNever" Content="Jamais" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="233" Margin="10,11,0,0" Foreground="White" IsChecked="{Binding HideMoment, ConverterParameter=0, Converter={StaticResource IntMatchToBoolConverter}}" />
+                <RadioButton x:Name="RbtOnStart" Content="Au démarrage du service" HorizontalAlignment="Left" Height="19" VerticalAlignment="Top" Width="233" Margin="10,30,0,0" IsChecked="{Binding HideMoment, ConverterParameter=1, Converter={StaticResource IntMatchToBoolConverter}}" Foreground="White"/>
+                <RadioButton x:Name="RbtOnLock" Content="Au verrouillage uniquement" HorizontalAlignment="Left" Height="18" VerticalAlignment="Top" Width="233" Margin="10,49,0,0" IsChecked="{Binding HideMoment, ConverterParameter=2, Converter={StaticResource IntMatchToBoolConverter}}" Foreground="White"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="BtnStart" Content="Démarrer" Margin="10,465,10,10" Click="BtnStartClick" Foreground="#FF323434" BorderBrush="#FF33B5E5" FontWeight="Bold">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF33B5E5" Offset="0"/>
+                    <GradientStop Color="#FF97E3FF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</controls:MetroWindow>
