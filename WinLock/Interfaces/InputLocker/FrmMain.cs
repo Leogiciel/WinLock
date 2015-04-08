@@ -179,7 +179,7 @@ namespace WinLock.Winforms
             {
                 UpdateSettings();
                 //B/Appel au parent
-                _parent.StartProcess();
+                _parent.StartProcess(_settings);
                 //B/Modifications IHM
                 OnStartProcess();
             }
@@ -216,7 +216,6 @@ namespace WinLock.Winforms
                 moment = 2;
             }
             _settings.HideMoment = moment;
-            _parent.SaveSettings(_settings);
         }
 
 
@@ -242,7 +241,6 @@ namespace WinLock.Winforms
         private delegate void DoInvoke();
 
         #endregion
-
 
         public void NotifyLock()
         {

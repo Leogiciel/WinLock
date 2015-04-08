@@ -42,8 +42,9 @@ namespace WinLock.Engine
                        Settings.Default.SecondLetter].ToString().ToUpper();
         }
 
-        public void StartProcess()
+        public void StartProcess(LockerSettings settings)
         {
+            SaveSettings(settings);
             Processing = true;
             _mKeyHook = new Hook.Hook(Hook.Hook.HookType.KeyBoard, Hook.Hook.HookVisibility.Global);
             _mKeyHook.OnKeyDown += OnKeydownAction;
@@ -226,7 +227,7 @@ namespace WinLock.Engine
             }
         }
 
-        public void SaveSettings(LockerSettings settings)
+        private void SaveSettings(LockerSettings settings)
         {
             Settings.Default.FirstLetter = settings.FirstLetter;
             Settings.Default.SecondLetter = settings.SecondLetter;

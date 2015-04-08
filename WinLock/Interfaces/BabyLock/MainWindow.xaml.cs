@@ -192,8 +192,7 @@ namespace WinLock.WPF
                 {
                     case LockerState.Stopped:
                         {
-                            _controller.SaveSettings(_settings);
-                            _controller.StartProcess();
+                            _controller.StartProcess(_settings);
                             OnStartProcess();
                         }
                         break;
@@ -218,11 +217,6 @@ namespace WinLock.WPF
             private void ShowWindowToolStripMenuItemClick(object sender, EventArgs e)
             {
                 ShowAgain();
-            }
-
-            private void Image_MouseDown(object sender, MouseButtonEventArgs e)
-            {
-                this.Close();
             }
 
             #endregion
